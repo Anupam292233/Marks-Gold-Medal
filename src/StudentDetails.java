@@ -62,6 +62,11 @@ class Student {
     public String getStatus() {
         return status;
     }
+
+	public int getTotalMarks() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 public class StudentDetails {
@@ -116,5 +121,74 @@ public class StudentDetails {
             System.out.println("Status: " + student.getStatus());
             System.out.println();
         }
+
+        // Find the toppers in each subject
+        int maxEnglishMarks = Integer.MIN_VALUE;
+        int maxMathsMarks = Integer.MIN_VALUE;
+        int maxPhysicsMarks = Integer.MIN_VALUE;
+        int maxChemistryMarks = Integer.MIN_VALUE;
+        int maxBiologyMarks = Integer.MIN_VALUE;
+
+        String englishTopper = "";
+        String mathsTopper = "";
+        String physicsTopper = "";
+        String chemistryTopper = "";
+        String biologyTopper = "";
+
+        for (Student student : students) {
+            // Find the topper in English
+            if (student.getEnglishMarks() > maxEnglishMarks) {
+                maxEnglishMarks = student.getEnglishMarks();
+                englishTopper = student.getName();
+            }
+
+            // Find the topper in Maths
+            if (student.getMathsMarks() > maxMathsMarks) {
+                maxMathsMarks = student.getMathsMarks();
+                mathsTopper = student.getName();
+            }
+
+            // Find the topper in Physics
+            if (student.getPhysicsMarks() > maxPhysicsMarks) {
+                maxPhysicsMarks = student.getPhysicsMarks();
+                physicsTopper = student.getName();
+            }
+
+            // Find the topper in Chemistry
+            if (student.getChemistryMarks() > maxChemistryMarks) {
+                maxChemistryMarks = student.getChemistryMarks();
+                chemistryTopper = student.getName();
+            }
+
+            // Find the topper in Biology
+            if (student.getBiologyMarks() > maxBiologyMarks) {
+                maxBiologyMarks = student.getBiologyMarks();
+                biologyTopper = student.getName();
+            }
+        }
+
+        // Find the student with the highest total marks (Gold Medalist)
+        int maxTotalMarks = Integer.MIN_VALUE;
+        String goldMedalist = "";
+
+        for (Student student : students) {
+            int totalMarks = student.getTotalMarks();
+            if (totalMarks > maxTotalMarks) {
+                maxTotalMarks = totalMarks;
+                goldMedalist = student.getName();
+            }
+        }
+
+        // Print the toppers in each subject
+        System.out.println("Toppers in each subject:");
+        System.out.println("English Topper: " + englishTopper);
+        System.out.println("Maths Topper: " + mathsTopper);
+        System.out.println("Physics Topper: " + physicsTopper);
+        System.out.println("Chemistry Topper: " + chemistryTopper);
+        System.out.println("Biology Topper: " + biologyTopper);
+        System.out.println();
+
+        // Print the Gold Medalist
+        System.out.println("Gold Medalist: " + goldMedalist);
     }
-}
+    }
